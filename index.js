@@ -71,10 +71,43 @@ app.get("/halamandetail/:id", (req, res) => {
 })
 
 
-app.post("/", (req, res) => {})
+app.post("/perencanaanById", async (req, res) => {
+  const plan = req.body.plan
+})
 
-app.delete("/", (req, res) => {})
+app.get("/perencanaanById", (req, res) => {})
+app.delete("/perencanaanbyId", (req, res) => {})
+app.put("/perencanaanById", (req, res) => {})
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
+})
+
+app.get("/search", (req,res) => {
+  // Mendapatkan nilai input dari query parameter (misal: /search?input=John)
+  const userInput = req.query.input;
+
+  // Membuat query untuk mencari data
+  const query = `
+    SELECT Place_Name, City
+    FROM tourism_with_id
+    WHERE LOWER(Place_Name) LIKE LOWER('%${userInput}%')
+       OR LOWER(City) LIKE LOWER('%${userInput}%')
+  `;
+
+  // Menjalankan query ke database
+  db.query(query, (err, result) => {
+    if (err) {
+      console.error('Error saat mengeksekusi query: ', err);
+      res.status(500).send('Terjadi kesalahan pada server');
+    } else {
+      // Cek apakah data ditemukan atau tidak
+      if (result.length > 0) {
+        res.json(result);
+      } else {
+        res.status(404).send('Data tidak ditemukan');
+      }
+    }
+  });
 })
