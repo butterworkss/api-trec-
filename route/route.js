@@ -5,6 +5,8 @@ const {
     filterDestinasi
 } = require('../controller/destinasi')
 
+const predict = require('../controller/rekomendasi.js')
+
 const express = require('express')
 const router = express.Router()
 
@@ -15,6 +17,7 @@ router.get('/destinasi', getDestinasi),
 router.get('/detailDestinasi/:id', getDetailDestinasibyId),
 router.get('/search', searchDestination)
 router.get('/filter', filterDestinasi)
+router.post('/recommendation', predict)
 
 
 module.exports = router     
