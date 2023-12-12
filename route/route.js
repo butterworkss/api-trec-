@@ -15,8 +15,8 @@ router.get('/', (req, res) => {
 })
 router.get('/destinasi', getDestinasi),
 router.get('/detailDestinasi/:id', getDetailDestinasibyId),
-router.get('/search', searchDestination)
-router.get('/filter', filterDestinasi)
+router.post('/search', searchDestination)
+router.post('/filter', filterDestinasi)
 router.post('/recommendation', predict)
 
 

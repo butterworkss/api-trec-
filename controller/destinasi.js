@@ -2,7 +2,7 @@ const db = require('../connection/connection.js')
 
 const getDestinasi = async (req, res) => {
     try {
-        const sql = `SELECT Place_Name, City, urlImage FROM tourism_with_id ORDER BY RAND() LIMIT 30;`;
+        const sql = `SELECT Place_id, Place_Name, City, urlImage FROM tourism_with_id ORDER BY RAND() LIMIT 30;`;
   
         const results = await new Promise((resolve, reject) => {
             db.query(sql, (err, results) => {
@@ -27,7 +27,7 @@ const getDestinasi = async (req, res) => {
 const getDetailDestinasibyId = async (req, res) => {
     try {
         const id = req.params.id;
-        const sql = `SELECT Place_Name, City, Price, Description, Lat, Longi, urlImage FROM tourism_with_id WHERE Place_id = ${id}`;
+        const sql = `SELECT Place_id, Place_Name, City, Price, Description, Lat, Longi, urlImage FROM tourism_with_id WHERE Place_id = ${id}`;
   
         const results = await new Promise((resolve, reject) => {
             db.query(sql, (err, results) => {
@@ -41,6 +41,7 @@ const getDetailDestinasibyId = async (req, res) => {
         });
   
         if (results.length > 0) {
+            const ID = results[0].Place_id
             const Nama = results[0].Place_Name;
             const Kota = results[0].City;
             const htm = results[0].Price;
@@ -52,6 +53,7 @@ const getDetailDestinasibyId = async (req, res) => {
             const googleMapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
   
             res.json({
+                ID: ID,
                 urlImage: gambar,
                 namaTempat: Nama,
                 Lokasi: Kota,
@@ -72,10 +74,9 @@ const searchDestination = async (req, res) => {
     try {
         const userInput = req.query.input;
         // const category = req.query.cat
-        const city = req.query.kota
 
         const query = `
-            SELECT Place_Name, City, urlImage
+            SELECT Place_id, Place_Name, City, urlImage
             FROM tourism_with_id
             WHERE LOWER(Place_Name) LIKE LOWER('%${userInput}%')
                 OR LOWER(City) LIKE LOWER('%${userInput}%') OR LOWER(Place_name) LIKE LOWER('%${userInput}%)')
@@ -108,15 +109,13 @@ const filterDestinasi = async (req, res) => {
         const category = req.query.cat;
         const city = req.query.kota;
 
-        let sql = 'SELECT * FROM tourism_with_id  WHERE 1';
+        let sql = 'SELECT  urlImage, Place_id, Place_Name, City, Category FROM tourism_with_id  WHERE 1';
         if (category) {
             sql += ` AND LOWER(Category) LIKE LOWER('%${category}%')`;
         }
         if (city) {
             sql += ` AND LOWER(City) LIKE LOWER('%${city}%')`;
         }
-
-        console.log(sql);
 
         const results = await new Promise((resolve, reject) => {
             db.query(sql, (err, results) => {

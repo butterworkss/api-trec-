@@ -2,18 +2,19 @@ const axios = require('axios')
 const db = require('../connection/connection.js')
 
 const predict = (req, res) => {
-    const prediksi = req.body
 
-    if (!prediksi) {
-		return res.status(400).json({ message: 'Question undefined' })
-	}
+    const destinasi = axios.get('https://api-trec-sxk5htqkea-et.a.run.app/destinasi')
+    .then(response => {
+      // Handle the response data
+      res.json(response.data)
+    })
+    .catch(error => {
+      // Handle errors
+      console.error('Error:', error);
+    });
 
-    const getRekomendasi = axios.post(
-        'https://api-ml-trec-sxk5htqkea-et.a.run.app/', res
-    )
-
-    console.log(getRekomendasi)
-    
 }
+
+
 
 module.exports=predict
