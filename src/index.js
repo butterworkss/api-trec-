@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 4000;
 const bodyParser = require('body-parser')
 const db = require('./connection/connection.js')
 const cors = require('cors')
 require('dotenv').config()
+const port = process.env.PORT || 4000;
 
 
 app.use(bodyParser.json())
