@@ -1,18 +1,24 @@
 const axios = require('axios')
-const db = require('../connection/connection.js')
+const db = require('../connection/connection.js');
 
-const predict = (req, res) => {
+const predict = async (req, res) => {
 
-    const destinasi = axios.get('https://api-trec-sxk5htqkea-et.a.run.app/destinasi')
-    .then(response => {
-      // Handle the response data
-      res.json(response.data)
-    })
-    .catch(error => {
-      // Handle errors
-      console.error('Error:', error);
-    });
+	const { question } = req.body
 
+  console.log(question)
+  res.json(question)
+
+  const apiurl = "http://127.0.0.1:5000/predict"
+
+  // const getAnswer = await axios.post(
+  //   apiurl,
+  //   {
+  //     text: "saya ingin pergi ke tempat wisata yang dekat dengan alam, karena saya ingin melihat banyak pemandangan yang menyejukkan mata",
+  //   }
+  // )
+
+  // console.log(getAnswer.data)
+  // res.send(getAnswer.data)
 }
 
 
