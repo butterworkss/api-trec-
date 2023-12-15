@@ -62,7 +62,7 @@ example response
 
 **Example request:**
 
-GET https://api-trec-sxk5htqkea-et.a.run.app/search?input=bandung
+POST https://api-trec-sxk5htqkea-et.a.run.app/search?input=bandung
 
 **Example response:**
 
