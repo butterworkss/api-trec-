@@ -18,6 +18,7 @@ GET [https://api-trec-sxk5htqkea-et.a.run.app/](https://api-trec-sxk5htqkea-et.a
 
 ```
 {
+        "id": 1,
         "Place_id": 128,
         "Place_Name": "Gumuk Pasir Parangkusumo",
         "City": "Yogyakarta",
@@ -67,21 +68,25 @@ GET https://api-trec-sxk5htqkea-et.a.run.app/search?input=bandung
 
 ```json
 {
+        "id": 1,
         "Place_Name": "GunungTangkuban perahu",
         "City": "Bandung",
         "urlImage": ""
     },
     {
+        "id": 4,
         "Place_Name": "Jalan Braga",
         "City": "Bandung",
         "urlImage": ""
     },
     {
+        "id": 3,
         "Place_Name": "Gedung Sate",
         "City": "Bandung",
         "urlImage": ""
     },
     {
+        "id": 2,
         "Place_Name": "Trans Studio Bandung",
         "City": "Bandung",
         "urlImage": ""
@@ -102,6 +107,7 @@ GET https://api-trec-sxk5htqkea-et.a.run.app/search?input=bandung
 
 ```json
 {
+        "id": 1,
         "urlImage": "",
         "Place_id": 82,
         "Place_Name": "Museum Satria Mandala",
@@ -109,6 +115,7 @@ GET https://api-trec-sxk5htqkea-et.a.run.app/search?input=bandung
         "Category": "Budaya"
     },
     {
+        "id": 1,
         "urlImage": "",
         "Place_id": 86,
         "Place_Name": "Keraton Yogyakarta",
@@ -123,6 +130,7 @@ GET https://api-trec-sxk5htqkea-et.a.run.app/search?input=bandung
 
 ```
 {
+        "id": 1,
         "urlImage": "",
         "Place_id": 335,
         "Place_Name": "Candi Gedong Songo",
@@ -130,6 +138,7 @@ GET https://api-trec-sxk5htqkea-et.a.run.app/search?input=bandung
         "Category": "Budaya"
     },
     {
+        "id": 1,
         "urlImage": "",
         "Place_id": 336,
         "Place_Name": "Grand Maerakaca",
@@ -144,6 +153,7 @@ GET https://api-trec-sxk5htqkea-et.a.run.app/search?input=bandung
 
 ```json
 {
+        "id": 1,
         "urlImage": "",
         "Place_id": 335,
         "Place_Name": "Candi Gedong Songo",
@@ -151,6 +161,7 @@ GET https://api-trec-sxk5htqkea-et.a.run.app/search?input=bandung
         "Category": "Budaya"
     },
     {
+        "id": 1,
         "urlImage": "",
         "Place_id": 338,
         "Place_Name": "Lawang Sewu",
